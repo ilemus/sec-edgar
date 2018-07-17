@@ -30,14 +30,16 @@ public class CompanyIndexRequest {
     public static int getCIK(String ticker) {
         String response;
         try {
-            response = executeGet(REQUEST_FORMAT);
+            String request = String.format(REQUEST_FORMAT, ticker);
+            System.out.println("request: " + request);
+            response = executeGet(request);
         } catch (Exception e) {
-            return 0;
+            return -3;
         }
         return parsePageForCik(response);
     }
     
-    public static String executeGet(String targetUrl) throws Exception {
+    private static String executeGet(String targetUrl) throws Exception {
         HttpURLConnection conn = null;
         URL url = new URL(targetUrl);
         conn = (HttpURLConnection) url.openConnection();
@@ -64,69 +66,32 @@ public class CompanyIndexRequest {
     }
     
     /**
-     * <div class="companyInfo">
-     *   <span class="companyName">
-     *       SPRINT Corp 
-     *   <acronym title="Central Index Key">
-     *       CIK
-     *   </acronym>
-     *       #: 
-     *   <a href="/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000101830&amp;owner=include&amp;count=10">
-     *       0000101830 (see all company filings)
+     * [0-9].10
+     * 0001045810
+     * 
+     * CIK is 10 digits long starting with 0's.
+     * It is repeated multiple times in the response and any of them are fine.
+     * 
      * @param response
      * @return
      */
-    public static int parsePageForCik(String response) {
-        if (response == null) return 0;
+    private static int parsePageForCik(String response) {
+        if (response == null) return -1;
         
+        Pattern p = Pattern.compile("[0-9]{10}");
+        Matcher m = p.matcher(response);
         
-        
-        
-        return 0;
-    }
-    
-    // Lazy solution to get div with class=className
-    public static String getDiv(String request, String className) {
-        Pattern p = Pattern.compile(className);
-        Matcher m = p.matcher(request);
-        // Simply finding a string might find content instead of tag
-        if (!m.matches()) {
-            return "";
+        if (!m.find()) {
+            return -2;
         }
-        
         
         int startIndex = m.start();
-        // find < since div class=className
-        int start = -1;
-        for (int i = startIndex; i >= 0; i--) {
-            if (request.charAt(i) == '<') {
-                start = i;
-                break;
-            }
-        }
-        
-        // N solution returns fail
-        if (start == -1) return "";
         
         StringBuilder sb = new StringBuilder();
-        // There are two ways to open/close a tag:
-        // 1. <tag some stuff> </tag>
-        // 2. <tag for reason />
-        // Strings might be containing '/' characters without > follow-up
-        int openTag = 1;
-        for (int i = start; i < request.length(); i++) {
-            char c = request.charAt(i);
-            sb.append(request.charAt(i));
-            
-            // This should consider tags, not brackets!!
-            if (c == '>') {
-                if (--openTag <= 0) break;
-            } else if (c == '<') {
-                openTag++;
-            }
+        for (int i = startIndex; i < startIndex + 10; i++) {
+            sb.append(response.charAt(i));
         }
-        
-        // N+N solution returns success
-        return sb.toString();
+                
+        return Integer.parseInt(sb.toString());
     }
 }
