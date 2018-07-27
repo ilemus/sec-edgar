@@ -4,12 +4,14 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Map;
 import java.util.Map.Entry;
 
 // Database tables will be primary key _id, string ticker, int value
+// Singleton design since there is only one database...
 public class CIKDatabase {
     private static final String DATABASE_NAME = "TickerMeta.db";
     // TODO: Put somewhere else than current directory
@@ -38,13 +40,6 @@ public class CIKDatabase {
             mSelf = new CIKDatabase();
         
         return mSelf;
-    }
-    
-    public Connection getConnection(String url) {
-        if (mConnection == null)
-            mConnection = connect(url);
-        
-        return mConnection;
     }
     
     private Connection connect(String url) {
@@ -93,6 +88,13 @@ public class CIKDatabase {
         }
     }
     
+    public Connection getConnection(String url) {
+        if (mConnection == null)
+            mConnection = connect(url);
+        
+        return mConnection;
+    }
+    
     /**
      * Input key value map
      * @param ticker
@@ -102,7 +104,7 @@ public class CIKDatabase {
         // Nothing to insert, so skip
         if (collection.size() == 0) return;
         
-        String sql = "insert into cik_values(ticker, cik) values(?, ?)";
+        String sql = "INSERT INTO cik_values(ticker, cik) VALUES(?, ?)";
         
         try (Connection conn = this.getConnection(DATABASE_LOCATION);
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -123,6 +125,27 @@ public class CIKDatabase {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+    
+    /**
+     * Get CIK from database given ticker name (Ex. NVDA returns 0001045810)
+     * @param ticker
+     * @return
+     */
+    public String queryCik(String ticker) {
+        String sql = "SELECT cik FROM cik_values WHERE ticker=" + ticker;
+        
+        try (Connection conn = this.getConnection(DATABASE_LOCATION);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            if (!rs.next())
+                return null;
+            
+            return rs.getString("cik");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }
