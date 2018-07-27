@@ -1,10 +1,13 @@
 package com.sec.edgar.cik-list;
 
-import down.CIKDatabase;
-import down.CIKRequest;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import com.sec.edgar.cik-list.CIKDatabase;
+import com.sec.edgar.cik-list.CIKRequest;
 
 class CIKList {
-    public static final String[] mSp500 = [];
+    public static final String[] mSp500 = {};
     private CIKDatabase mCikDb;
 
     public CIKList() {
@@ -12,7 +15,7 @@ class CIKList {
     }
 
     private HashMap<String, Integer> loadCikFromDb(ArrayList<String> tickers) {
-        HashMap<String, Integer> cikLoaded = new HashMap<String, String>();
+        HashMap<String, Integer> cikLoaded = new HashMap<String, Integer>();
 
         for (int i = 0; i < tickers.size(); i++) {
             int q = mCikDb.queryCik(tickers.get(i));

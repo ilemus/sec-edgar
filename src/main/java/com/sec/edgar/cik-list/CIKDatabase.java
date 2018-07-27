@@ -142,7 +142,7 @@ public class CIKDatabase {
             if (!rs.next())
                 return -1;
             
-            return rs.getString("cik");
+            return rs.getInt("cik");
         } catch (SQLException e) {
             e.printStackTrace();
             return -2;
