@@ -11,18 +11,27 @@ class CIKList {
         mCikDb = CIKDatabase.getCikDatabase();
     }
 
-    private HashMap<String, String> loadCikFromDb(String[] tickers) {
-        HashMap<String, String> cikLoaded = new HashMap<String, String>();
+    private HashMap<String, Integer> loadCikFromDb(ArrayList<String> tickers) {
+        HashMap<String, Integer> cikLoaded = new HashMap<String, String>();
 
-        for (int i = 0; i < tickers.length; i++) {
-            String q = mCikDb.queryCik(tickers[i]);
-            if (q == null) continue;
+        for (int i = 0; i < tickers.size(); i++) {
+            int q = mCikDb.queryCik(tickers.get(i));
+            if (q < 0) continue;
             else {
-                cikLoaded.put(tickers[i], q);
+                cikLoaded.put(tickers.get(i), q);
             }
         }
 
         return cikLoaded;
     }
-    
+
+    private HashMap<String, String> requestAndUpdate(ArrayList<String> tickers) {
+        HashMap<String, Integer> cikRequested = new HashMap<String, Integer>();
+        for (int i = 0; i < tickers.size(); i++) {
+            int result = CIKRequest.getCIK(tickers.get(i));
+            if (result > 0) {
+                
+            }
+        }
+    }
 }

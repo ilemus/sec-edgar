@@ -20,7 +20,7 @@ public class CIKDatabase {
             "CREATE TABLE IF NOT EXISTS cik_values ("
             + "_id integer PRIMARY KEY, "
             + "ticker char(8), "
-            + "cik char(10)"
+            + "cik integer"
             + ");";
     
     // Keep connection so we do not have to keep opening a connection
@@ -100,7 +100,7 @@ public class CIKDatabase {
      * @param ticker
      * @param cik
      */
-    public void insertIntoCikTable(Map<String, String> collection) {
+    public void insertIntoCikTable(Map<String, Integer> collection) {
         // Nothing to insert, so skip
         if (collection.size() == 0) return;
         
@@ -109,11 +109,11 @@ public class CIKDatabase {
         try (Connection conn = this.getConnection(DATABASE_LOCATION);
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
             int batchCount = 0;
-            for (Entry<String, String> entry: collection.entrySet()) {
+            for (Entry<String, Integer> entry: collection.entrySet()) {
                 // ticker
                 pstmt.setString(1, entry.getKey());
                 // cik
-                pstmt.setString(2, entry.getValue());
+                pstmt.setInt(2, entry.getValue());
                 
                 pstmt.addBatch();
                 batchCount++;
@@ -133,19 +133,19 @@ public class CIKDatabase {
      * @param ticker
      * @return
      */
-    public String queryCik(String ticker) {
+    public int queryCik(String ticker) {
         String sql = "SELECT cik FROM cik_values WHERE ticker=" + ticker;
         
         try (Connection conn = this.getConnection(DATABASE_LOCATION);
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             if (!rs.next())
-                return null;
+                return -1;
             
             return rs.getString("cik");
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
+            return -2;
         }
     }
 }
