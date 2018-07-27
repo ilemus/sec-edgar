@@ -1,4 +1,4 @@
-package com.sec.edgar.cik-list;
+package com.sec.edgar.cik;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

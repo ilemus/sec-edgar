@@ -1,4 +1,4 @@
-package com.sec.edgar.cik-list;
+package com.sec.edgar.cik;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -60,7 +60,9 @@ public class CIKDatabase {
      * @param url
      */
     private void createTickerMetaDatabase(String url) {
-        try (Connection conn = this.getConnection(url)) {
+        Connection conn;
+        try {
+            conn = this.getConnection(url);
             if (conn == null) {
                 System.err.println("Failed to initialize database: " + url);
                 return;
@@ -80,8 +82,11 @@ public class CIKDatabase {
      * @param tableDefineSql
      */
     private void createCikTable(String url, String tableDefineSql) {
-        try (Connection conn = this.getConnection(url);
-                Statement stmt = conn.createStatement()) {
+        Connection conn;
+        Statement stmt;
+        try {
+            conn = this.getConnection(url);
+            stmt = conn.createStatement();
             stmt.execute(tableDefineSql);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -105,9 +110,12 @@ public class CIKDatabase {
         if (collection.size() == 0) return;
         
         String sql = "INSERT INTO cik_values(ticker, cik) VALUES(?, ?)";
-        
-        try (Connection conn = this.getConnection(DATABASE_LOCATION);
-                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        Connection conn;
+        PreparedStatement pstmt;
+
+        try {
+            conn = this.getConnection(DATABASE_LOCATION);
+            pstmt = conn.prepareStatement(sql);
             int batchCount = 0;
             for (Entry<String, Integer> entry: collection.entrySet()) {
                 // ticker
@@ -127,7 +135,7 @@ public class CIKDatabase {
             e.printStackTrace();
         }
     }
-    
+
     /**
      * Get CIK from database given ticker name (Ex. NVDA returns 0001045810)
      * @param ticker
@@ -135,10 +143,14 @@ public class CIKDatabase {
      */
     public int queryCik(String ticker) {
         String sql = "SELECT cik FROM cik_values WHERE ticker=" + ticker;
-        
-        try (Connection conn = this.getConnection(DATABASE_LOCATION);
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
+        Connection conn;
+        Statement stmt;
+        ResultSet rs;
+
+        try {
+            conn = this.getConnection(DATABASE_LOCATION);
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(sql);
             if (!rs.next())
                 return -1;
             
