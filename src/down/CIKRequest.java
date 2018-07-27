@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
  * @author yitzchak
  *
  */
-public class CompanyIndexRequest {
+public class CIKRequest {
     // Use count of 10 to limit data to process
     // https://www.sec.gov/cgi-bin/browse-edgar?CIK=nvda&count=10
     public static final String REQUEST_FORMAT = "https://www.sec.gov/cgi-bin/browse-edgar?CIK=%s&count=10";
