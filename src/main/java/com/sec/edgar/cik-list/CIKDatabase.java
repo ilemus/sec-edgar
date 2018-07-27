@@ -1,4 +1,4 @@
-package down;
+package com.sec.edgar.cik-list;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
