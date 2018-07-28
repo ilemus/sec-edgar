@@ -29,7 +29,7 @@ public class CIKDatabase {
     public CIKDatabase(Connection conn) {
         mConnection = conn;
         // Create table if not exist
-        createCikTable(DATABASE_LOCATION, CREATE_TABLE_STATEMENT);
+        createCikTable(CREATE_TABLE_STATEMENT);
     }
 
     /**
@@ -38,7 +38,7 @@ public class CIKDatabase {
      * @param url
      * @param tableDefineSql
      */
-    private void createCikTable(String url, String tableDefineSql) {
+    private void createCikTable(String tableDefineSql) {
         Statement stmt;
 
         try {
