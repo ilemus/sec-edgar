@@ -22,24 +22,17 @@ import java.util.regex.Pattern;
  * @author yitzchak
  *
  */
-public class CIKRequest {
+public class CIKParser {
     // Use count of 10 to limit data to process
     // https://www.sec.gov/cgi-bin/browse-edgar?CIK=nvda&count=10
     public static final String REQUEST_FORMAT = "https://www.sec.gov/cgi-bin/browse-edgar?CIK=%s&count=10";
-    
-    public static int getCIK(String ticker) {
-        String response;
-        try {
-            String request = String.format(REQUEST_FORMAT, ticker);
-            System.out.println("request: " + request);
-            response = executeGet(request);
-        } catch (Exception e) {
-            return -3;
-        }
-        return parsePageForCik(response);
+    private String mHtml;
+
+    public CIKParser(String response) {
+        mHtml = response;
     }
-    
-    private static String executeGet(String targetUrl) throws Exception {
+
+    public static String executeGet(String targetUrl) throws Exception {
         HttpURLConnection conn = null;
         URL url = new URL(targetUrl);
         conn = (HttpURLConnection) url.openConnection();
@@ -64,7 +57,7 @@ public class CIKRequest {
         
         return response.toString();
     }
-    
+
     /**
      * [0-9].10
      * 0001045810
@@ -75,11 +68,11 @@ public class CIKRequest {
      * @param response
      * @return
      */
-    private static int parsePageForCik(String response) {
-        if (response == null) return -1;
+    public int parsePageForCik() {
+        if (mHtml == null) return -1;
         
         Pattern p = Pattern.compile("[0-9]{10}");
-        Matcher m = p.matcher(response);
+        Matcher m = p.matcher(mHtml);
         
         if (!m.find()) {
             return -2;
@@ -89,7 +82,7 @@ public class CIKRequest {
         
         StringBuilder sb = new StringBuilder();
         for (int i = startIndex; i < startIndex + 10; i++) {
-            sb.append(response.charAt(i));
+            sb.append(mHtml.charAt(i));
         }
                 
         return Integer.parseInt(sb.toString());

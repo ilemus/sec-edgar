@@ -11,70 +11,27 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 // Database tables will be primary key _id, string ticker, int value
-// Singleton design since there is only one database...
 public class CIKDatabase {
     private static final String DATABASE_NAME = "TickerMeta.db";
     // TODO: Put somewhere else than current directory
-    private static final String DATABASE_LOCATION = "jdbc:sqlite:" + DATABASE_NAME;
+    public static final String DATABASE_LOCATION = "jdbc:sqlite:" + DATABASE_NAME;
     private static final String CREATE_TABLE_STATEMENT =
             "CREATE TABLE IF NOT EXISTS cik_values ("
             + "_id integer PRIMARY KEY, "
             + "ticker char(8), "
             + "cik integer"
             + ");";
-    
+
     // Keep connection so we do not have to keep opening a connection
     private Connection mConnection = null;
-    private static CIKDatabase mSelf = null;
-    
+
     // Has no input initially
-    private CIKDatabase() {
-        // Create database if not exist
-        createTickerMetaDatabase(DATABASE_LOCATION);
+    public CIKDatabase(Connection conn) {
+        mConnection = conn;
         // Create table if not exist
         createCikTable(DATABASE_LOCATION, CREATE_TABLE_STATEMENT);
     }
-    
-    public static CIKDatabase getCikDatabase() {
-        if (mSelf == null)
-            mSelf = new CIKDatabase();
-        
-        return mSelf;
-    }
-    
-    private Connection connect(String url) {
-        Connection conn = null;
-        try {
-            conn = DriverManager.getConnection(url);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        
-        return conn;
-    }
-    
-    /**
-     * If connection cannot be established print error log.
-     * If SQL Exception print error log.
-     * Create Database and print driver name.
-     * @param url
-     */
-    private void createTickerMetaDatabase(String url) {
-        Connection conn;
-        try {
-            conn = this.getConnection(url);
-            if (conn == null) {
-                System.err.println("Failed to initialize database: " + url);
-                return;
-            }
-            
-            DatabaseMetaData meta = conn.getMetaData();
-            System.out.println("The driver name is: " + meta.getDriverName());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    
+
     /**
      * If connection fails or SQL Exception print error log.
      * Create table.
@@ -82,24 +39,16 @@ public class CIKDatabase {
      * @param tableDefineSql
      */
     private void createCikTable(String url, String tableDefineSql) {
-        Connection conn;
         Statement stmt;
+
         try {
-            conn = this.getConnection(url);
-            stmt = conn.createStatement();
+            stmt = mConnection.createStatement();
             stmt.execute(tableDefineSql);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
-    public Connection getConnection(String url) {
-        if (mConnection == null)
-            mConnection = connect(url);
-        
-        return mConnection;
-    }
-    
+
     /**
      * Input key value map
      * @param ticker
@@ -108,14 +57,12 @@ public class CIKDatabase {
     public void insertIntoCikTable(Map<String, Integer> collection) {
         // Nothing to insert, so skip
         if (collection.size() == 0) return;
-        
+
         String sql = "INSERT INTO cik_values(ticker, cik) VALUES(?, ?)";
-        Connection conn;
         PreparedStatement pstmt;
 
         try {
-            conn = this.getConnection(DATABASE_LOCATION);
-            pstmt = conn.prepareStatement(sql);
+            pstmt = mConnection.prepareStatement(sql);
             int batchCount = 0;
             for (Entry<String, Integer> entry: collection.entrySet()) {
                 // ticker
@@ -143,13 +90,11 @@ public class CIKDatabase {
      */
     public int queryCik(String ticker) {
         String sql = "SELECT cik FROM cik_values WHERE ticker=" + ticker;
-        Connection conn;
         Statement stmt;
         ResultSet rs;
 
         try {
-            conn = this.getConnection(DATABASE_LOCATION);
-            stmt = conn.createStatement();
+            stmt = mConnection.createStatement();
             rs = stmt.executeQuery(sql);
             if (!rs.next())
                 return -1;
