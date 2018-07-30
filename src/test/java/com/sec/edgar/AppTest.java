@@ -25,7 +25,6 @@ public class AppTest
      */
     public static Test suite() {
         TestSuite suite = new TestSuite(AppTest.class);
-        suite.addTestSuite(CikTest.class);
         return suite;
     }
 

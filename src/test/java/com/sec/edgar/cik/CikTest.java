@@ -29,15 +29,15 @@ public class CikTest
     {
         assertTrue( true );
     }
-    
+
     /**
-     * Test creation of database and inserts
+     * Test creation of database
      */
-    public void testDatabase() {
+   public void testDatabaseCreate() {
         Connection conn = new TestConn();
         // Table creation
         CIKDatabase cikDb = new CIKDatabase(conn);
-        
+
         // Insert into table values
         Map<String, Integer> values = new HashMap<String, Integer>(3);
         values.put("NVDA", 9834);
@@ -45,5 +45,36 @@ public class CikTest
         values.put("AAPL", -1);
 
         cikDb.insertIntoCikTable(values);
+    }
+
+     /**
+     * Test insert into database
+     */
+   public void testDatabaseInsert() {
+       Connection conn = new TestConn();
+       // Table creation
+       CIKDatabase cikDb = new CIKDatabase(conn);
+
+       // Insert into table values
+       Map<String, Integer> values = new HashMap<String, Integer>(3);
+       values.put("NVDA", 9834);
+       values.put("AMD", 29384);
+       values.put("AAPL", -1);
+       
+       cikDb.insertIntoCikTable(values);
+    }
+
+    /**
+     * Test query of database
+     */
+    public void testDatabaseQuery() {
+        Connection conn = new TestConn();
+        // Table creation
+        CIKDatabase cikDb = new CIKDatabase(conn);
+        
+        int cik = cikDb.queryCik("NVDA");
+        System.out.println("cik: " + cik);
+        assertTrue(cik > 0);
+
     }
 }

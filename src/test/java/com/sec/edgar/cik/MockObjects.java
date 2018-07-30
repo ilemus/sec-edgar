@@ -631,8 +631,7 @@ public class MockObjects {
 
 		@Override
 		public boolean next() throws SQLException {
-			// TODO Auto-generated method stub
-			return false;
+			return true;
 		}
 
 		@Override
