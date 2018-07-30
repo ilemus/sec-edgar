@@ -33,6 +33,7 @@ public class CikTest
      */
     public void testDatabase() {
         Connection conn = new TestConn();
+        // Table creation
         CIKDatabase cikDb = new CIKDatabase(conn);
         
     }
