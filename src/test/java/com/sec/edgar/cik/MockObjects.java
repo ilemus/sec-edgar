@@ -52,7 +52,20 @@ public class MockObjects {
 
         @Override
         public ResultSet executeQuery(String sql) throws SQLException {
-            Assert.assertTrue("CREATE TABLE IF NOT EXISTS cik_values (_id integer PRIMARY KEY, ticker char(8), cik integer);".equals(sql));
+            if (sql == null) {
+                Assert.assertTrue(false);
+                return null;
+            } else if (sql.startsWith("CREATE TABLE") {
+                Assert.assertTrue("CREATE TABLE IF NOT EXISTS cik_values (_id integer PRIMARY KEY, ticker char(8), cik integer);".equals(sql));
+                return null;
+            } else if (sql.startsWith("SELECT cik FROM cik_values") {
+                Assert.assertTrue(sql.startsWith("SELECT cik FROM cik_values WHERE ticker="));
+
+                // Need to implement resultset
+                return null;//new ResultSet();
+            }
+
+            Assert.assertTrue(false);
             return null;
         }
 
@@ -490,8 +503,9 @@ public class MockObjects {
 
 		@Override
 		public void setInt(int arg0, int arg1) throws SQLException {
-			// TODO Auto-generated method stub
-			
+            // Second argument should always be 2
+			Assert.assertEquals(arg0, 2);
+            System.out.println("setInt() arg1: " + arg1);
 		}
 
 		@Override
@@ -592,8 +606,9 @@ public class MockObjects {
 
 		@Override
 		public void setString(int arg0, String arg1) throws SQLException {
-			// TODO Auto-generated method stub
-			
+            // First argument should be 1
+            Assert.assertEquals(arg0, 1);
+			System.out.println("setString() arg1: " + arg1);
 		}
 
 		@Override

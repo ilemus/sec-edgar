@@ -1,6 +1,8 @@
 package com.sec.edgar.cik;
 
 import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
 
 import junit.framework.TestCase;
 import com.sec.edgar.cik.CIKDatabase;
@@ -36,5 +38,12 @@ public class CikTest
         // Table creation
         CIKDatabase cikDb = new CIKDatabase(conn);
         
+        // Insert into table values
+        Map<String, Integer> values = new HashMap<String, Integer>(3);
+        values.put("NVDA", 9834);
+        values.put("AMD", 29384);
+        values.put("AAPL", -1);
+
+        cikDb.insertIntoCikTable(values);
     }
 }
