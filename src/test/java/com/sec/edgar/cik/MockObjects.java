@@ -36,6 +36,1161 @@ import java.util.concurrent.Executor;
 import junit.framework.Assert;
 
 public class MockObjects {
+	public static class TestResultSet implements ResultSet {
+
+		@Override
+		public boolean isWrapperFor(Class<?> arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public <T> T unwrap(Class<T> arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public boolean absolute(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public void afterLast() throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void beforeFirst() throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void cancelRowUpdates() throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void clearWarnings() throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void close() throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void deleteRow() throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public int findColumn(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public boolean first() throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public Array getArray(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Array getArray(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public InputStream getAsciiStream(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public InputStream getAsciiStream(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public BigDecimal getBigDecimal(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public BigDecimal getBigDecimal(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public BigDecimal getBigDecimal(int arg0, int arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public BigDecimal getBigDecimal(String arg0, int arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public InputStream getBinaryStream(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public InputStream getBinaryStream(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Blob getBlob(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Blob getBlob(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public boolean getBoolean(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean getBoolean(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public byte getByte(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public byte getByte(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public byte[] getBytes(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public byte[] getBytes(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Reader getCharacterStream(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Reader getCharacterStream(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Clob getClob(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Clob getClob(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public int getConcurrency() throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public String getCursorName() throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Date getDate(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Date getDate(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Date getDate(int arg0, Calendar arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Date getDate(String arg0, Calendar arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public double getDouble(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public double getDouble(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public int getFetchDirection() throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public int getFetchSize() throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public float getFloat(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public float getFloat(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public int getHoldability() throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public int getInt(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public int getInt(String arg0) throws SQLException {
+			if (arg0 == null) {
+				return -1;
+			} else if (arg0.equals("cik")) {
+				return 987;
+			} else {
+				return 0;
+			}
+		}
+
+		@Override
+		public long getLong(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public long getLong(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public ResultSetMetaData getMetaData() throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Reader getNCharacterStream(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Reader getNCharacterStream(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public NClob getNClob(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public NClob getNClob(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public String getNString(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public String getNString(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Object getObject(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Object getObject(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Object getObject(int arg0, Map<String, Class<?>> arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Object getObject(String arg0, Map<String, Class<?>> arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public <T> T getObject(int arg0, Class<T> arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public <T> T getObject(String arg0, Class<T> arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Ref getRef(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Ref getRef(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public int getRow() throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public RowId getRowId(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public RowId getRowId(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public SQLXML getSQLXML(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public SQLXML getSQLXML(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public short getShort(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public short getShort(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public Statement getStatement() throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public String getString(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public String getString(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Time getTime(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Time getTime(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Time getTime(int arg0, Calendar arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Time getTime(String arg0, Calendar arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Timestamp getTimestamp(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Timestamp getTimestamp(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Timestamp getTimestamp(int arg0, Calendar arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Timestamp getTimestamp(String arg0, Calendar arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public int getType() throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public URL getURL(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public URL getURL(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public InputStream getUnicodeStream(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public InputStream getUnicodeStream(String arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public SQLWarning getWarnings() throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public void insertRow() throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public boolean isAfterLast() throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean isBeforeFirst() throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean isClosed() throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean isFirst() throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean isLast() throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean last() throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public void moveToCurrentRow() throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void moveToInsertRow() throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public boolean next() throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean previous() throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public void refreshRow() throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public boolean relative(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean rowDeleted() throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean rowInserted() throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean rowUpdated() throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public void setFetchDirection(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void setFetchSize(int arg0) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateArray(int arg0, Array arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateArray(String arg0, Array arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateAsciiStream(int arg0, InputStream arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateAsciiStream(String arg0, InputStream arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateAsciiStream(int arg0, InputStream arg1, int arg2) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateAsciiStream(String arg0, InputStream arg1, int arg2) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateAsciiStream(int arg0, InputStream arg1, long arg2) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateAsciiStream(String arg0, InputStream arg1, long arg2) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateBigDecimal(int arg0, BigDecimal arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateBigDecimal(String arg0, BigDecimal arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateBinaryStream(int arg0, InputStream arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateBinaryStream(String arg0, InputStream arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateBinaryStream(int arg0, InputStream arg1, int arg2) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateBinaryStream(String arg0, InputStream arg1, int arg2) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateBinaryStream(int arg0, InputStream arg1, long arg2) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateBinaryStream(String arg0, InputStream arg1, long arg2) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateBlob(int arg0, Blob arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateBlob(String arg0, Blob arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateBlob(int arg0, InputStream arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateBlob(String arg0, InputStream arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateBlob(int arg0, InputStream arg1, long arg2) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateBlob(String arg0, InputStream arg1, long arg2) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateBoolean(int arg0, boolean arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateBoolean(String arg0, boolean arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateByte(int arg0, byte arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateByte(String arg0, byte arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateBytes(int arg0, byte[] arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateBytes(String arg0, byte[] arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateCharacterStream(int arg0, Reader arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateCharacterStream(String arg0, Reader arg1) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateCharacterStream(int arg0, Reader arg1, int arg2) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateCharacterStream(String arg0, Reader arg1, int arg2) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateCharacterStream(int columnIndex, Reader x, long length) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateCharacterStream(String columnLabel, Reader reader, long length) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateClob(int columnIndex, Clob x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateClob(String columnLabel, Clob x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateClob(int columnIndex, Reader reader) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateClob(String columnLabel, Reader reader) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateClob(int columnIndex, Reader reader, long length) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateClob(String columnLabel, Reader reader, long length) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateDate(int columnIndex, Date x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateDate(String columnLabel, Date x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateDouble(int columnIndex, double x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateDouble(String columnLabel, double x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateFloat(int columnIndex, float x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateFloat(String columnLabel, float x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateInt(int columnIndex, int x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateInt(String columnLabel, int x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateLong(int columnIndex, long x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateLong(String columnLabel, long x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateNCharacterStream(int columnIndex, Reader x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateNCharacterStream(String columnLabel, Reader reader) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateNCharacterStream(int columnIndex, Reader x, long length) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateNCharacterStream(String columnLabel, Reader reader, long length) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateNClob(int columnIndex, NClob nClob) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateNClob(String columnLabel, NClob nClob) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateNClob(int columnIndex, Reader reader) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateNClob(String columnLabel, Reader reader) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateNClob(int columnIndex, Reader reader, long length) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateNClob(String columnLabel, Reader reader, long length) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateNString(int columnIndex, String nString) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateNString(String columnLabel, String nString) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateNull(int columnIndex) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateNull(String columnLabel) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateObject(int columnIndex, Object x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateObject(String columnLabel, Object x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateObject(int columnIndex, Object x, int scaleOrLength) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateObject(String columnLabel, Object x, int scaleOrLength) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateRef(int columnIndex, Ref x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateRef(String columnLabel, Ref x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateRow() throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateRowId(int columnIndex, RowId x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateRowId(String columnLabel, RowId x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateSQLXML(int columnIndex, SQLXML xmlObject) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateSQLXML(String columnLabel, SQLXML xmlObject) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateShort(int columnIndex, short x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateShort(String columnLabel, short x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateString(int columnIndex, String x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateString(String columnLabel, String x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateTime(int columnIndex, Time x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateTime(String columnLabel, Time x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateTimestamp(int columnIndex, Timestamp x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void updateTimestamp(String columnLabel, Timestamp x) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public boolean wasNull() throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+	}
+	
     public static class TestStatement implements Statement {
 
         @Override
@@ -61,8 +1216,8 @@ public class MockObjects {
             } else if (sql.startsWith("SELECT cik FROM cik_values") {
                 Assert.assertTrue(sql.startsWith("SELECT cik FROM cik_values WHERE ticker="));
 
-                // Need to implement resultset
-                return null;//new ResultSet();
+                // Need to implement ResultSet
+                return new TestResultSet();//new ResultSet();
             }
 
             Assert.assertTrue(false);
