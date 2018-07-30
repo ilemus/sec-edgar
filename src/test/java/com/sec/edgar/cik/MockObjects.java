@@ -409,13 +409,11 @@ public class MockObjects {
 			return null;
 		}
 
-		@Override
 		public <T> T getObject(int arg0, Class<T> arg1) throws SQLException {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
-		@Override
 		public <T> T getObject(String arg0, Class<T> arg1) throws SQLException {
 			// TODO Auto-generated method stub
 			return null;
@@ -1210,10 +1208,10 @@ public class MockObjects {
             if (sql == null) {
                 Assert.assertTrue(false);
                 return null;
-            } else if (sql.startsWith("CREATE TABLE") {
+            } else if (sql.startsWith("CREATE TABLE")) {
                 Assert.assertTrue("CREATE TABLE IF NOT EXISTS cik_values (_id integer PRIMARY KEY, ticker char(8), cik integer);".equals(sql));
                 return null;
-            } else if (sql.startsWith("SELECT cik FROM cik_values") {
+            } else if (sql.startsWith("SELECT cik FROM cik_values")) {
                 Assert.assertTrue(sql.startsWith("SELECT cik FROM cik_values WHERE ticker="));
 
                 // Need to implement ResultSet
