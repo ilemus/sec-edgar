@@ -68,10 +68,14 @@ class CIKList {
         for (int i = 0; i < tickers.size(); i++) {
             int result = makeRequest(tickers.get(i));
             if (result > 0) {
-                
+                cikRequested.put(tickers.get(i), result);
             }
         }
 
-        return null;
+        // Save to database
+        mCikDb.insertIntoCikTable(cikRequested);
+
+        // Values from server
+        return cikRequested;
     }
 }
