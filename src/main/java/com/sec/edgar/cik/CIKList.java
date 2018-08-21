@@ -15,7 +15,11 @@ public class CIKList {
     public CIKList() {
         Connection conn;
         try {
-        	conn = DriverManager.getConnection(CIKDatabase.DATABASE_LOCATION);
+        	conn = DriverManager.getConnection(
+                    CIKDatabase.DATABASE_LOCATION,
+                    CIKDatabase.USER_NAME,
+                    CIKDatabase.PASSWORD
+                );
         	mCikDb = new CIKDatabase(conn);
         } catch (SQLException e) {
         	e.printStackTrace();

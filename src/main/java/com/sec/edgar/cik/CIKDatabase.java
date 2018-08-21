@@ -14,7 +14,9 @@ import java.util.Map.Entry;
 public class CIKDatabase {
     private static final String DATABASE_NAME = "TickerMeta.db";
     // TODO: Put somewhere else than current directory
-    public static final String DATABASE_LOCATION = "jdbc:sqlite:" + DATABASE_NAME;
+    public static final String DATABASE_LOCATION = "jdbc:sqlite://localhost:9999/home/isaac/.project/sec-edgar/" + DATABASE_NAME;
+    public static final String USER_NAME = "isaac";
+    public static final String PASSWORD = "password";
     private static final String CREATE_TABLE_STATEMENT =
             "CREATE TABLE IF NOT EXISTS cik_values ("
             + "_id integer PRIMARY KEY, "
