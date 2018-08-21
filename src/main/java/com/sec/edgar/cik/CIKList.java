@@ -13,6 +13,13 @@ public class CIKList {
     private CIKDatabase mCikDb = null; 
 
     public CIKList() {
+        // load the sqlite-JDBC driver using the current class loader
+        try {
+            Class.forName("org.sqlite.JDBC");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         Connection conn;
         try {
         	conn = DriverManager.getConnection(
