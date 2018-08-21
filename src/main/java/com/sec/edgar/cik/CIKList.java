@@ -8,8 +8,8 @@ import java.util.HashMap;
 
 import com.sec.edgar.cik.CIKParser;
 
-class CIKList {
-    public static final String[] mSp500 = {};
+public class CIKList {
+    public static final String[] mSp500 = {"NVDA"};
     private CIKDatabase mCikDb = null; 
 
     public CIKList() {
@@ -30,6 +30,7 @@ class CIKList {
      */
     private HashMap<String, Integer> loadCikFromDb(ArrayList<String> tickers) {
         HashMap<String, Integer> cikLoaded = new HashMap<String, Integer>();
+        if (mCikDb == null) return cikLoaded;
 
         for (int i = 0; i < tickers.size(); i++) {
             int q = mCikDb.queryCik(tickers.get(i));
@@ -63,17 +64,21 @@ class CIKList {
      * @param tickers
      * @return
      */
-    private HashMap<String, Integer> requestAndUpdate(ArrayList<String> tickers) {
+    public HashMap<String, Integer> requestAndUpdate(ArrayList<String> tickers) {
         HashMap<String, Integer> cikRequested = new HashMap<String, Integer>();
         for (int i = 0; i < tickers.size(); i++) {
             int result = makeRequest(tickers.get(i));
             if (result > 0) {
                 cikRequested.put(tickers.get(i), result);
+            } else {
+                System.err.println("Error requesting the CIK: " + result);
             }
         }
 
         // Save to database
-        mCikDb.insertIntoCikTable(cikRequested);
+        if (mCikDb != null) {
+            mCikDb.insertIntoCikTable(cikRequested);
+        }
 
         // Values from server
         return cikRequested;
