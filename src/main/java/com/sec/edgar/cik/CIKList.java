@@ -39,7 +39,7 @@ public class CIKList {
      * @param tickers
      * @return
      */
-    private HashMap<String, Integer> loadCikFromDb(ArrayList<String> tickers) {
+    public HashMap<String, Integer> loadCikFromDb(ArrayList<String> tickers) {
         HashMap<String, Integer> cikLoaded = new HashMap<String, Integer>();
         if (mCikDb == null) return cikLoaded;
 
