@@ -1,12 +1,14 @@
 package com.sec.edgar.cik;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import junit.framework.TestCase;
 import com.sec.edgar.cik.CIKDatabase;
 import com.sec.edgar.cik.MockObjects.TestConn;
+import com.sec.edgar.cik.CIKFileReader;
 
 /**
  * Unit test for simple App.
@@ -76,5 +78,22 @@ public class CikTest
         System.out.println("cik: " + cik);
         assertTrue(cik > 0);
 
+    }
+
+    /**
+     * Test reading of file formatted data
+     */
+    public void testFileReader() {
+        // S&P500 list is static file location
+        ArrayList<String> tickers = CIKFileReader.getTickerArray("data/constituents.csv");
+        assertTrue(tickers.size() > 0);
+        assertTrue(tickers.size() == 505);
+        if (tickers.size() > 0) {
+            assertTrue(tickers.get(0) != null);
+            if (tickers.get(0) != null) {
+                // The first index is MMM wut??? rest is alphabetically sorted
+                assertTrue(tickers.get(0).equals("MMM"));
+            }
+        }
     }
 }

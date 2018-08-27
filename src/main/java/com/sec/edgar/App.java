@@ -1,9 +1,12 @@
 package com.sec.edgar;
 
-import com.sec.edgar.cik.CIKList;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.sec.edgar.cik.CIKList;
+import com.sec.edgar.cik.CIKFileReader;
+
 
 /**
  * Hello world!
@@ -23,8 +26,9 @@ public class App {
     }
 
     public void run() {
-        ArrayList<String> tickers = new ArrayList<String>();
-        tickers.add(CIKList.mSp500[0]);
+        // Load S&P 500 symbols from file
+        ArrayList<String> tickers = CIKFileReader.getTickerArray("data/constituents.csv");
+
         HashMap<String, Integer> cikDb = mCikList.loadCikFromDb(tickers);
         for (int i = tickers.size() - 1; i >= 0; i--) {
             if (cikDb.containsKey(tickers.get(i))) tickers.remove(i);
@@ -35,9 +39,6 @@ public class App {
             cikDb.put(entry.getKey(), entry.getValue());
         }
 
-        System.out.println("Printing keys...");
-        for (Map.Entry<String, Integer> entry : cikDb.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-        }
+        System.out.println("Number of saved keys: " + cikDb.size());
     }
 }

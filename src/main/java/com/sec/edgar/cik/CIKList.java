@@ -9,8 +9,9 @@ import java.util.HashMap;
 import com.sec.edgar.cik.CIKParser;
 
 public class CIKList {
-    public static final String[] mSp500 = {"NVDA"};
+    // Entire list should be loaded and managed here
     private CIKDatabase mCikDb = null; 
+    // S&P 500 list should be loaded from file here
 
     public CIKList() {
         // load the sqlite-JDBC driver using the current class loader
