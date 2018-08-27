@@ -26,7 +26,7 @@ public class App {
         ArrayList<String> tickers = new ArrayList<String>();
         tickers.add(CIKList.mSp500[0]);
         HashMap<String, Integer> cikDb = mCikList.loadCikFromDb(tickers);
-        for (int i = tickers.size(); i >= 0; i--) {
+        for (int i = tickers.size() - 1; i >= 0; i--) {
             if (cikDb.containsKey(tickers.get(i))) tickers.remove(i);
         }
         HashMap<String, Integer> cikMap = mCikList.requestAndUpdate(tickers);

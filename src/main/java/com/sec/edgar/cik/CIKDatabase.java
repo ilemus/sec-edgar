@@ -91,7 +91,7 @@ public class CIKDatabase {
      * @return
      */
     public int queryCik(String ticker) {
-        String sql = "SELECT cik FROM cik_values WHERE ticker=" + ticker;
+        String sql = "SELECT cik FROM cik_values WHERE ticker='" + ticker + "'";
         Statement stmt;
         ResultSet rs;
 
