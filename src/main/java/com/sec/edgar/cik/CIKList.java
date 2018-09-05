@@ -5,8 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import com.sec.edgar.cik.CIKParser;
+import com.sec.edgar.cik.CIKFileReader;
 
 public class CIKList {
     // Entire list should be loaded and managed here
@@ -94,5 +96,22 @@ public class CIKList {
 
         // Values from server
         return cikRequested;
+    }
+
+    public HashMap<String, Integer> loadSP500CIK() {
+        // Load S&P 500 symbols from file
+        ArrayList<String> tickers = CIKFileReader.getTickerArray("data/constituents.csv");
+
+        HashMap<String, Integer> cikDb = loadCikFromDb(tickers);
+        for (int i = tickers.size() - 1; i >= 0; i--) {
+            if (cikDb.containsKey(tickers.get(i))) tickers.remove(i);
+        }
+
+        HashMap<String, Integer> cikMap = requestAndUpdate(tickers);
+        for (Map.Entry<String, Integer> entry : cikMap.entrySet()) {
+            cikDb.put(entry.getKey(), entry.getValue());
+        }
+
+        return cikDb;
     }
 }
